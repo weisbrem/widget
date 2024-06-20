@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Widget</title>
+  </head>
+  <body class="body">
+    <div class="widget">
+      <div class="progress">
+        <svg width="60" height="60" viewBox="0 0 60 60" class="progress__bar">
+          <circle class="progress__line progress__line--bg"></circle>
+          <circle class="progress__line progress__line--fg"></circle>
+        </svg>
+        <span class="progress__count">0/7</span>
+      </div>
+      <div class="checklist">
+        <span class="checklist__label">Чеклист</span>
+        <span class="checklist__result">Выполнено: 0 из 7 действий</span>
+        <span class="checklist__next-step">Следующее действие: Созвониться с клиентом до 23.05.24 12:00</span>
+      </div>
+      <button class="button" type="button">Открыть чеклист</button>
+    </div>
+  </body>
+</html>

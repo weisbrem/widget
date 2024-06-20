@@ -1,0 +1,146 @@
+:root {
+  --font-family: 'Inter', 'Arial', sans-serif;
+  --text-color: #ffffff;
+  --main-bg-color: #3579f5;
+
+  --progress: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  font-family: var(--font-family);
+  color: var(--text-color);
+}
+
+/* Widget */
+
+.widget {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  gap: 16px;
+
+  background-color: var(--main-bg-color);
+  border-radius: 10px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+/* Progress */
+
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+}
+
+.progress__bar {
+  position: absolute;
+
+  --size: 60px;
+  --half-size: calc(var(--size) / 2);
+  --stroke-width: 2px;
+  --radius: calc((var(--size) - var(--stroke-width)) / 2);
+  --circumference: calc(var(--radius) * pi * 2);
+  --dash: calc((var(--progress) * var(--circumference)) / 100);
+}
+
+.progress__line {
+  cx: var(--half-size);
+  cy: var(--half-size);
+  r: var(--radius);
+  stroke-width: var(--stroke-width);
+  fill: none;
+  stroke-linecap: round;
+}
+
+.progress__line--bg {
+  stroke-width: 1px;
+  stroke: rgba(255, 255, 255, 0.5);
+}
+
+.progress__line--fg {
+  transform: rotate(-90deg);
+  transform-origin: var(--half-size) var(--half-size);
+  stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
+  stroke: #ffffff;
+}
+
+.progress__count {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  z-index: 1;
+  user-select: none;
+}
+
+/* Checklist */
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.checklist__label {
+  background-color: #2364db;
+  padding: 0 13px;
+  border-radius: 40px;
+  width: fit-content;
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.checklist__result {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.checklist__next-step {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+/* Button */
+
+.button {
+  outline: none;
+  color: #4777ed;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 10px 32px;
+  background-color: #f4f8ff;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &.button:hover,
+  &.button:focus {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    background-color: #4777ed;
+  }
+
+  &.button:active {
+    background-color: #1b50d8;
+  }
+}
